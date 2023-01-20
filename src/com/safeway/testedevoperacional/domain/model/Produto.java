@@ -20,16 +20,8 @@ public class Produto {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getNome() {
 		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public Integer getQuantidade() {
@@ -44,16 +36,9 @@ public class Produto {
 		return preco;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
-
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 }

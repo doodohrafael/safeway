@@ -25,48 +25,24 @@ public class Venda {
 		return codigo;
 	}
 
-	public void setCodigo(Integer código) {
-		this.codigo = código;
-	}
-
 	public List<Produto> getItens() {
 		return itens;
-	}
-
-	public void setItens(List<Produto> itens) {
-		this.itens = itens;
 	}
 
 	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
 	public Double getComissao() {
 		return comissao;
-	}
-
-	public void setComissao(Double comissaoSistema) {
-		this.comissao = comissaoSistema;
 	}
 
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	public Cliente getCliente() {
 		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 
 }
