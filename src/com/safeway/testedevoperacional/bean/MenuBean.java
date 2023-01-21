@@ -112,7 +112,7 @@ public class MenuBean {
 					if(escolhaProduto == 0) {
 						break;
 					}
-					for (Produto produtoSearch : produtos) {
+					for (Produto produtoSearch : produtosEscolhidos) {
 						if (produtoSearch.getId().equals(escolhaProduto)) {
 							carrinho.add(produtoSearch);
 							produtoSearch.setQuantidade(
