@@ -35,10 +35,11 @@ public class LoginBean {
 				menuPrincipal(usuarios, clientes, empresas, 
 						produtos, carrinho, vendas, sc, usuarioLogado);
 			} else
-				System.err.println("Senha incorreta");
+				System.err.println("Senha incorreta!\n");
+				login(usuariosSearch, clientes, empresas, carrinho, carrinho, vendas);
 		} else {
-			System.out.println("Usuário não encontrado");
+			System.err.println("Usuário não encontrado!\n");
+			login(usuariosSearch, clientes, empresas, carrinho, carrinho, vendas);
 		}
 	}
-
 }

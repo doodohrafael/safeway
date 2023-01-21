@@ -121,8 +121,6 @@ public class MenuBean {
 						}
 					}
 				} while (escolhaProduto != 0);
-				//if nenhum produto for escolhido, mostrar uma msg e não entrar na emrepsa, n criar uma venda
-//				if()
 				System.out.println("************************************************************");
 				System.out.println("Resumo da compra: ");
 				carrinho.stream().forEach(produto -> {
