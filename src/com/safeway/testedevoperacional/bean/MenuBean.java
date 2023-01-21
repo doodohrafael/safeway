@@ -109,6 +109,9 @@ public class MenuBean {
 					});
 					System.out.println("\n0 - Finalizar compra");
 					escolhaProduto = scanner.nextInt();
+					if(escolhaProduto == 0) {
+						break;
+					}
 					for (Produto produtoSearch : produtos) {
 						if (produtoSearch.getId().equals(escolhaProduto)) {
 							carrinho.add(produtoSearch);
@@ -118,6 +121,8 @@ public class MenuBean {
 						}
 					}
 				} while (escolhaProduto != 0);
+				//if nenhum produto for escolhido, mostrar uma msg e não entrar na emrepsa, n criar uma venda
+//				if()
 				System.out.println("************************************************************");
 				System.out.println("Resumo da compra: ");
 				carrinho.stream().forEach(produto -> {
@@ -126,18 +131,20 @@ public class MenuBean {
 								"    R$" + produto.getPreco());
 					}
 				});
-				Empresa empresaEscolhida = empresas.stream()
-						.filter(empresa -> empresa.getId().equals(escolhaEmpresa))
-						.collect(Collectors.toList()).get(0);
-				Cliente clienteLogado = clientes.stream()
-						.filter(cliente -> cliente.getUsername()
-								.equals(usuarioLogado.getUsername()))
-						.collect(Collectors.toList()).get(0);
-				Venda venda = criarVenda(carrinho, empresaEscolhida, clienteLogado, vendas);
-				System.out.println("Total: R$" + venda.getValor());
-				System.out.println("************************************************************");
-				carrinho.clear();
-				iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
+				if(carrinho.size() > 0) {
+					Empresa empresaEscolhida = empresas.stream()
+							.filter(empresa -> empresa.getId().equals(escolhaEmpresa))
+							.collect(Collectors.toList()).get(0);
+					Cliente clienteLogado = clientes.stream()
+							.filter(cliente -> cliente.getUsername()
+									.equals(usuarioLogado.getUsername()))
+							.collect(Collectors.toList()).get(0);
+					Venda venda = criarVenda(carrinho, empresaEscolhida, clienteLogado, vendas);
+					System.out.println("Total: R$" + venda.getValor());
+					System.out.println("************************************************************");
+					carrinho.clear();
+					iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
+				} 
 			}
 			case 2: {
 				System.out.println();
@@ -155,8 +162,8 @@ public class MenuBean {
 						System.out.println("************************************************************");
 					}
 				});
-				iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
-			}
+					iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
+				} 
 			case 0: {
 				iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
 			}
