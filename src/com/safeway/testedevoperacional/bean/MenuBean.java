@@ -39,7 +39,7 @@ public class MenuBean {
 							venda.getItens().stream().forEach(x -> {
 								System.out.println(x.getId() + " - " + x.getNome() + "    R$" + x.getPreco());
 							});
-							System.out.println("Total Venda: R$" + venda.getValor());
+							System.out.println("\nTotal Venda: R$" + venda.getValor());
 							System.out.println("Total Taxa a ser paga: R$" + venda.getComissao());
 							System.out.println("Total Líquido  para empresa: "
 									+ (venda.getValor() - venda.getComissao()));

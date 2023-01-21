@@ -11,6 +11,7 @@ import com.safeway.testedevoperacional.domain.model.Usuario;
 import com.safeway.testedevoperacional.domain.model.Venda;
 
 import static com.safeway.testedevoperacional.bean.MenuBean.menuPrincipal;
+import static com.safeway.testedevoperacional.Main.iniciaSistema;
 
 public class LoginBean {
 	
@@ -36,10 +37,10 @@ public class LoginBean {
 						produtos, carrinho, vendas, sc, usuarioLogado);
 			} else
 				System.err.println("Senha incorreta!\n");
-				login(usuariosSearch, clientes, empresas, carrinho, carrinho, vendas);
+				iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
 		} else {
 			System.err.println("Usuário não encontrado!\n");
-			login(usuariosSearch, clientes, empresas, carrinho, carrinho, vendas);
+			iniciaSistema(usuarios, clientes, empresas, produtos, carrinho, vendas);
 		}
 	}
 }
