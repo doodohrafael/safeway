@@ -1,5 +1,6 @@
 package com.safeway.testedevoperacional.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -29,22 +30,26 @@ public class MenuBean {
 				System.out.println();
 				System.out.println("************************************************************");
 				System.out.println("VENDAS EFETUADAS");
-				vendas.stream().forEach(venda -> {
-					if (venda.getEmpresa().getId().equals(usuarioLogado.getEmpresa().getId())) {
-						System.out.println("************************************************************");
-						System.out.println("Venda de código: " + venda.getCodigo() + " no CPF "
-								+ venda.getCliente().getCpf() + ": ");
-						venda.getItens().stream().forEach(x -> {
-							System.out.println(x.getId() + " - " + x.getNome() + "    R$" + x.getPreco());
-						});
-						System.out.println("Total Venda: R$" + venda.getValor());
-						System.out.println("Total Taxa a ser paga: R$" + venda.getComissao());
-						System.out.println("Total Líquido  para empresa: "
-								+ (venda.getValor() - venda.getComissao()));
-						System.out.println("************************************************************");
-					}
-
-				});
+				if (vendas.size() > 0) {
+					vendas.stream().forEach(venda -> {
+						if (venda.getEmpresa().getId().equals(usuarioLogado.getEmpresa().getId())) {
+							System.out.println("************************************************************");
+							System.out.println("Venda de código: " + venda.getCodigo() + " no CPF "
+									+ venda.getCliente().getCpf() + ": ");
+							venda.getItens().stream().forEach(x -> {
+								System.out.println(x.getId() + " - " + x.getNome() + "    R$" + x.getPreco());
+							});
+							System.out.println("Total Venda: R$" + venda.getValor());
+							System.out.println("Total Taxa a ser paga: R$" + venda.getComissao());
+							System.out.println("Total Líquido  para empresa: "
+									+ (venda.getValor() - venda.getComissao()));
+							System.out.println("************************************************************");
+						}
+	
+					});
+				} else {
+					System.out.println("Nenhuma venda ainda foi efetuada.");
+				}
 				System.out.println("Saldo Empresa: " + usuarioLogado.getEmpresa().getSaldo());
 				System.out.println("************************************************************");
 
@@ -76,7 +81,7 @@ public class MenuBean {
 			}
 			}
 
-		} else {
+		} else { // Para clientes
 			System.out.println("1 - Relizar Compras");
 			System.out.println("2 - Ver Compras");
 			System.out.println("0 - Deslogar");
@@ -90,7 +95,13 @@ public class MenuBean {
 				Integer escolhaEmpresa = scanner.nextInt();
 				Integer escolhaProduto = -1;
 				do {
+					List<Produto> produtosEscolhidos = new ArrayList<>();
 					System.out.println("\nEscolha os seus produtos: ");
+					
+					produtosEscolhidos = produtos.stream()
+							.filter(p -> p.getEmpresa().getId().equals(escolhaEmpresa))
+							.collect(Collectors.toList());
+					
 					produtos.stream().forEach(produto -> {
 						if (produto.getEmpresa().getId().equals(escolhaEmpresa)) {
 							System.out.println(produto.getId() + " - " + produto.getNome());
