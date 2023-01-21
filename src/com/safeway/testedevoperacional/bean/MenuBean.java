@@ -102,7 +102,7 @@ public class MenuBean {
 							.filter(p -> p.getEmpresa().getId().equals(escolhaEmpresa))
 							.collect(Collectors.toList());
 					
-					produtos.stream().forEach(produto -> {
+					produtosEscolhidos.stream().forEach(produto -> {
 						if (produto.getEmpresa().getId().equals(escolhaEmpresa)) {
 							System.out.println(produto.getId() + " - " + produto.getNome());
 						}
